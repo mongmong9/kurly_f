@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ko-KR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="images/favicon.ico" />
+  <!-- 파비콘도 head안에 넣어야 적용됨 -->
+  <link rel="stylesheet preload" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- 폰트링크는 head안에 넣을것 -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reset.css">
+  <title>회원가입 - 컬리</title>
+</head>
+
+<!-- 
+파일명이 index인 이유는 /햇을때 홈으로 이동하기로 그렇게 정해져잇음 그래서 처음부터 그렇게 만드는것 -->
+
+<body>
+  <!-- 메뉴바랑 푸터를 제외하고 메인가입페이지만 만드는것 -->
+  <main class="register_container">
+    <h2 class="register_title">회원가입</h2>
+
+    <div class="require">
+      <img class="require_mark" src="images/Require.svg" alt="필수입력사항 표시">필수입력사항
+    </div>
+
+    <div class="line_bold" role="presentation"></div>
+    <!-- 구분선입니당 -->
+    <!-- role을 부여하는 이유는 접근성을 위해서임 -->
+
+
+    <form method="post">
+      <!-- 민감한 정보는 포스트(대문자표기)로 만들것 -->
+      <fieldset>
+        <!-- fieldset를 주면 화면에 박스표기가 뜨는데
+        css상 전부 리셋을 햇기때문데 화면상에 보이지 않는것 -->
+        <legend class="sr_only">회원가입</legend>
+        <!-- 무엇에 대한 폼인지 지정해주는 태그 -->
+        <!-- sr_only는 화면상에 보이진 않지만 스크린리더에서는 읽을 수 잇음 -->
+
+        <div class="user_id_wrapper">
+          <label for="user_id" class="user_id_label">아이디<img class="require_mark" src="images/Require.svg"
+              alt="필수입력사항 표시" /></label>
+          <!-- 아이콘의 클래스 이름명은 위에서 준것과 같이 지정해서
+              일괄 스타일이 적용될 수 잇게 함  -->
+          <input required type="text" id="user_id" class="user_id_input" name="user_id" placeholder="아이디를 입력해주세요" />
+          <button type="button" class="duplicate_id_btn">중복확인</button>
+        </div>
+        <!--  for랑 name의 이름명이 같아야함 -->
+        <!-- 위에 만들어두고 그대로 복사해서 동일하게 만들기 -->
+
+        <div class="user_password_wrapper">
+          <label for="user_password" class="user_password_label">비밀번호<img class="require_mark" src="images/Require.svg"
+              alt="필수입력사항 표시" /></label>
+          <input required type="password" id="user_password" name="user_password" class="user_password_input"
+            placeholder="비밀번호를 입력해주세요" />
+        </div>
+
+        <div class="user_password_check_wrapper">
+          <label for="user_password_check" class="user_password_check_label">비밀번호 확인<img class="require_mark"
+              src="images/Require.svg" alt="필수입력사항 표시" /></label>
+          <input required type="password" id="user_password_check" name="user_password_check"
+            class="user_password_check_input" placeholder="비밀번호를 한번 더 입력해주세요" />
+        </div>
+
+        <div class="user_name_wrapper">
+          <label for="user_name" class="user_name_label">이름<img class="require_mark" src="images/Require.svg"
+              alt="필수입력사항 표시" /></label>
+          <input required type="text" id="user_name" name="user_name" class="user_name_input"
+            placeholder="이름을 입력해주세요" />
+        </div>
+
+        <div class="user_email_wrapper">
+          <label for="user_email" class="user_email_label">이메일<img class="require_mark" src="images/Require.svg"
+              alt="필수입력사항 표시" /></label>
+          <input required type="email" id="user_email" name="user_email" class="user_email_input"
+            placeholder="예) marketkurly@kurly.com" aria-invalid="false" aria-describedby="user_email_error" />
+          <button type="button" class="duplicate_email_btn">중복확인</button>
+        </div>
+
+        <div class="user_phone_wrapper">
+          <label for="user_phone" class="user_phone_label">휴대폰<img class="require_mark" src="images/Require.svg"
+              alt="필수입력사항 표시" /></label>
+          <input required type="tel" id="user_phone" name="user_phone" class="user_phone_input" placeholder="숫자만 입력해주세요"
+            maxlength="11" />
+          <button type="button" class="duplicate_email_btn">인증번호 받기</button>
+        </div>
+
+        <div class="user_address_wrapper">
+          <span class="user_address_label">주소<img class="require_mark" src="images/Require.svg"
+              alt="필수입력사항 표시" /></span>
+              <!-- span으로 쓰는 이유는...? input을 쓸 이유가 없기때문에 span을 쓴것 -->
+          <div class="search_address">
+            <button type="button" class="user_address_btn">주소검색</button>
+            <!-- 타입을 버튼으로 주지 않으면 submit으로 들어가니 꼭 수정해야함 -->
+            <p>배송지에 따라 상품 정보가 달라질 수 있습니다.</p>
+          </div>
+        </div>
+
+
+        <div class="user_gender_wrapper">
+          <div class="user_gender_label">성별</div>
+          <div class="gender_radio_wrapper">
+            <input class="sr_only" type="radio" name="gender" id="user_gender_male" value="male" />
+            <label for="user_gender_male">남자</label>
+            <input class="sr_only" type="radio" name="gender" id="user_gender_female" value="female" />
+            <label for="user_gender_female">여자</label>
+            <input class="sr_only" type="radio" name="gender" id="user_gender_none" value="none" checked />
+            <label for="user_gender_none">선택안함</label>
+          </div>
+        </div>
+<!-- 라디오를 준이유는 선택을 하나만 하면 되는거라
+타입을 radio로 주는거임 -->
+<!-- 네임값도 동일하게 줘야함 -->
+
+        <div class="user_birth_wrapper">
+          <div class="user_birth_label">생년월일</div>
+          <div class="birth_box">
+            <label for="year" class="sr_only">년</label>
+            <input type="number" name="year" id="year" placeholder="YYYY" />
+            <label for="month" class="sr_only">월</label>
+            <input type="number" name="month" id="month" placeholder="MM" />
+            <label for="day" class="sr_only">일</label>
+            <input type="number" name="day" id="day" placeholder="DD" />
+          </div>
+        </div>
+
+        <div class="user_add_wrapper">
+          <div class="user_add_label">추가입력 사항</div>
+          <div class="add_radio_wrapper">
+            <input class="sr_only" type="radio" name="add" id="user_add_friend" />
+            <label for="user_add_friend">친구초대 추천인 아이디</label>
+            <input class="sr_only" type="radio" name="add" id="user_add_event" />
+            <label for="user_add_event">참여 이벤트명</label>
+          </div>
+        </div>
+
+        <div class="line_nomal" role="presentation"></div>
+
+
+        <div class="user_agree_info_wrapper">
+          <div class="user_agree_info_label">
+            이용약관동의
+            <img class="require_mark" src="images/Require.svg" alt="필수입력사항 표시" />
+          </div>
+          <div class="agree_info_wrapper">
+            <div class="agree_check_box">
+              <input type="checkbox" name="agree_all" id="agree_all" class="agree_all_input sr_only" />
+              <div class="agree_all">
+                <label for="agree_all" class="agree_all_label">전체 동의합니다.</label>
+                <p class="agree_all_text">
+                  선택항목에 동의하지 않은 경우도 회원가입 및 일반적인
+                  서비스를 이용할 수 있습니다.
+                </p>
+              </div>
+            </div>
+<!-- 첫번째꺼 만들어서 아래 고대로 복사해서 클래스만 수정하면 됨 -->
+
+            <div class="agree_check_box">
+              <input class="sr_only" type="checkbox" name="check_1" id="check_1" />
+              <div class="agree_check">
+                <label for="check_1">이용약관 동의 (필수)</label>
+                <button type="button" class="agree_ckeck_btn">
+                  약관보기
+                </button>
+              </div>
+            </div>
+
+            <div class="agree_check_box">
+              <input class="sr_only" type="checkbox" name="check_2" id="check_2" />
+              <div class="agree_check">
+                <label for="check_2">개인정보 수집 · 이용 동의 (필수)</label>
+                <button type="button" class="agree_ckeck_btn">
+                  약관보기
+                </button>
+              </div>
+            </div>
+
+            <div class="agree_check_box">
+              <input class="sr_only" type="checkbox" name="check_3" id="check_3" />
+              <div class="agree_check">
+                <label for="check_3">무료배송, 할인쿠폰 등 혜택/정보 수신 동의 (선택)</label>
+                <button type="button" class="agree_ckeck_btn">
+                  약관보기
+                </button>
+              </div>
+            </div>
+
+            <div class="agree_check_box">
+              <input class="sr_only" type="checkbox" name="check_4" id="check_4" />
+              <div class="agree_check">
+                <label for="check_4">본인은 만 14세 이상입니다. (필수)</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+
+    <div class="line_thin" role="presentation"></div>
+
+    <!-- 폼을 벗어낫기 때문에 폼태그를 닫고 그 뒤에 붙여줌 -->
+  
+    <div class="join_btn_wrapper">
+      <button type="button" class="join_btn ">
+        가입하기
+      </button>
+    </div>
+  </main>
+</body>
+
+</html>
